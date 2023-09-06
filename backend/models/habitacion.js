@@ -1,17 +1,21 @@
 const {Schema, model, Types} = require('mongoose')
 
 
-HotelSchema = Schema({ // definicion de los atributos de la tabla de citas
-    idhotel: {
-        type: Types.ObjectId, 
-        ref: "habitacion"
-    },
+HabSchema = Schema({ // definicion de los atributos de la tabla de citas
     Numero_habitacion:{
         type: String,
         require: true
     },
+    Cantidad_cuertos:{
+        type: Number,
+        require: true
+    },
     Tipo_habitacion:{
         type: String,
+        require: true
+    },
+    precio_habitacion: {
+        type: Number,
         require: true
     },
     Descripcion_habitacion:{
@@ -21,4 +25,4 @@ HotelSchema = Schema({ // definicion de los atributos de la tabla de citas
 });
 
 
-module.exports= model('habitacion', HabitacionSchema)
+module.exports= model('habitacion', HabSchema)

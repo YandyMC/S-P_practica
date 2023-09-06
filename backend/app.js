@@ -1,26 +1,14 @@
-const restana = require('restana')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const parser = require('body-parser')
-const service = restana()
-service.use(cors())
-service.use(parser.json())
-const {cliente, Habitacion, hotel, resena, reserva} = require('./models');
+const express = require("express");
+const dbConnect = require("./database/mongodb");
+const cors = require("cors");
+const router = require("./routes/route_hab");
 
+const App = express();
 
-mongoose.connect(
-    `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}mongodb+srv://admin:12345@hotel.tk6bla6.mongodb.net/`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    },
-    (err) => {
-      if (err) {
-        console.error('FAILED TO CONNECT TO MONGODB');
-        console.error(err);
-      } else {
-        console.log('CONNECTED TO MONGODB!!');
-        app.listen(80);
-      }
-    }
-  );
+dbConnect(App);
+
+App.use(cors({ origin: true }));
+
+App.use(express.json());
+
+App.use("/app/hotel", router);
