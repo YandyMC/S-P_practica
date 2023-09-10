@@ -1,18 +1,13 @@
-FROM node
+FROM node:14
 
 WORKDIR /app
 
-COPY package.json .
+COPY package.json ./
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 4000
 
-ENV userDB=value
-ENV passDB=value
-
-
-
-CMD [ "npm","start" ]
+CMD ["npm", "start"]

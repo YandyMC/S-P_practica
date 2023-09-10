@@ -4,12 +4,12 @@ const Habitacion = require ("../models/habitacion");
 // Controlador para crear una habitación
 const createHab = async (req, res) => {
     try {
-      const { Numero_habitacion, Cantidad_cuertos, Tipo_habitacion, precio_habitacion, Descripcion_habitacion } = req.body;
+      const { Numero_habitacion, Cantidad_cuartos, Tipo_habitacion, precio_habitacion, Descripcion_habitacion } = req.body;
   
       // Crea una nueva instancia del modelo "Habitacion" con los datos proporcionados
       const nuevaHabitacion = new Habitacion({
         Numero_habitacion,
-        Cantidad_cuertos,
+        Cantidad_cuartos,
         Tipo_habitacion,
         precio_habitacion,
         Descripcion_habitacion,

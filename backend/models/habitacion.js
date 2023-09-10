@@ -6,7 +6,7 @@ HabSchema = Schema({ // definicion de los atributos de la tabla de citas
         type: String,
         require: true
     },
-    Cantidad_cuertos:{
+    Cantidad_cuartos:{
         type: Number,
         require: true
     },
