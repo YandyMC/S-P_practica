@@ -10,91 +10,39 @@
 
 ## Instalar dependencias y ejecutar el proyecto:
 
-Instalar dependencias con:
+Instalar dependencias de manera individual en las carpetas de **backend** y **frontend** con:
 
 ```bash
 npm install
 ```
 
-Situarse en la carpeta de **backend** y **frontend** y ejecutar:
+# Creación de contenedores en Docker
+
+En las carpetas de **backend** y **frontend** digitar los siguientes comando por consola respectivamente: 
 
 ```bash
-npm run dev
+docker-compose up -d --build backend
+
+docker-compose up -d --build frontend
 ```
 
-El backend estará corriendo en el puerto **4000** y el frontend por su parte en el puerto **3000**
-
-# Diagrama Entidad Relación del Proyecto
-
-El proyecto trabaja en relación a un Sistema de Reserva Hotelera, las entidades del mismo así como sus relaciones se muestran en la siguiente imagen:
-
-![Diagrama entidad relación](/images/ERD.png)
-
-## Entidades asignadas a cada estudiante:
-- **Reseña**: Carreño Reyes Erick Roger
-- **Hotel**: Macías Chávez Yandy Eliecer
-- **Reserva**: Navarrete Cevallos Luis David
-- **Habitación**: Pico Vargas Jordy Gabriel
-- **Cliente**: Toala Delgado Jesús Smir
-
-# Dockerización de la Base de Datos, Backend y Frontend
-
-## Pasos iniciales:
-
-Descargar las imágenes oficiales de **Node.js** y **MongoDB** con los siguientes comandos respectivamente:
+En la carpeta de **frontend** digitar por consola:
 
 ```bash
-docker pull node
-
-docker pull mongo
-```
-
-## Base de datos (No relacional - MongoDB)
-
-Ejecutar lo siguiente dentro de una terminal alojada dentro de la carpeta del proyecto:
-
-```bash
-docker run -d --name mi-mongodb -p 27017:27017 mongo
-```
-
-De esta manera se crea el contenedor de MongoDB en Docker, a su vez también exponemos o llamamos al puerto **27017** donde trabaja.
-
-## Backend (Node.js)
-
-Una vez nos encontramos en la carpeta del backend, en una terminal construimos la imagen del backend con el siguiente comando:
-
-```bash
-docker build -t backend-ln .
-```
-
-Ejecutamos el contenedor digitando lo siguiente:
-
-```bash
-docker run -d --name backend-ln -p 4000:4000 backend-ln
-```
-
-## Frontend (React + Next.js)
-
-
-Ejecutamos la imagen y el contenedor respectivamente con los siguientes comandos:
-
-```bash
-1. docker build -t frontend-ln .
-
-2. docker run -d -p 3000:3000 --name frontend-ln frontend-ln
+npm run build
 ```
 
 # Demostración Práctica
 
-A continuación se adjuntan capturas de las imágenes en Docker creadas, backend, frontend, y la base de datos ejecutándose con normalidad.
+A continuación se adjuntan capturas del adapter function creado, además de la ejecución de los contenedores y un ingreso desde el frontend.
 
-![Imágenes en Docer](/images/docker-images.png)
-
-
-![Backend corriendo](/images/backend.png)
+![Adapter function 1](/images/adapter_function01.png)
 
 
-![Frontend corriendo](/images/frontend.png)
+![Adapter function 2](/images/adapter_function02.png)
 
 
-![Base de datos corriendo](/images/mongo.png)
+![Contenedores](/images/container.png)
+
+
+![Frontend](/images/frontend_ln.png)
